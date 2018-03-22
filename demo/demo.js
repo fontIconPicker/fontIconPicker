@@ -58,6 +58,12 @@ jQuery( document ).ready( function( $ ) {
 		'Others' : [ 'icon-music', 'icon-help', 'icon-lock', 'icon-lock-open', 'icon-lock-open-alt', 'icon-pin', 'icon-eye', 'icon-eye-off', 'icon-flag', 'icon-flag-empty', 'icon-flag-checkered', 'icon-thumbs-up', 'icon-thumbs-down', 'icon-thumbs-up-alt', 'icon-thumbs-down-alt', 'icon-bell', 'icon-bell-alt' ]
 	};
 
+	var svgs = [ 'Baby-Mobile', 'Bag-Present', 'Application-Map', 'Batman',
+		'Battery-Charging', 'Beach', 'Bell', 'Bonsai', 'Boss-2', 'Boss-3',
+		'Boss-5', 'Burglar', 'Bus', 'Businesswoman-1', 'Camera-Front',
+		'Candles', 'Canoe', 'Captain-Shield', 'Candy', 'Cement-Mixer',
+		'Car-Jumper', 'Checklist', 'Cheese', 'Cashier-2', 'Chair-4', 'Chat-2' ];
+
 	// Centered
 	$( '#grey-theme' ).fontIconPicker( {
 		source: icomoonIcons,
@@ -111,7 +117,8 @@ jQuery( document ).ready( function( $ ) {
 
 	// Ajax Button
 	const loadAjax = $( '#load-ajax' ).fontIconPicker( {
-		theme: 'fip-bootstrap'
+		theme: 'fip-bootstrap',
+		appendTo: 'body'
 	} );
 
 	// Add the event on the button
@@ -160,5 +167,223 @@ jQuery( document ).ready( function( $ ) {
 					.prop( 'disabled', false );
 			} );
 		e.stopPropagation();
+	} );
+
+	// Select without category
+	$( '#s-wt-ct' ).fontIconPicker( {
+		theme: 'fip-bootstrap',
+		useAttribute: true,
+		attributeName: 'data-icomoon',
+		emptyIconValue: 'none',
+		appendTo: 'body'
+	} );
+
+	// Select with category
+	$( '#s-w-ct' ).fontIconPicker( {
+		theme: 'fip-darkgrey',
+		useAttribute: true,
+		attributeName: 'data-icomoon',
+		emptyIconValue: 'none',
+		appendTo: 'body',
+		allCategoryText: 'Have at it…',
+		unCategorizedText: 'Evil Ones'
+	} );
+
+	// Input without category
+	$( '#i-wt-c' ).fontIconPicker( {
+		source: fontelloIcons.Others,
+		theme: 'fip-grey',
+		appendTo: 'body'
+	} );
+
+	// Input with category
+	$( '#i-w-c' ).fontIconPicker( {
+		source: fontelloIcons,
+		theme: 'fip-grey',
+		appendTo: 'body'
+	} );
+
+	// Auto Close
+	$( '#autoclose' ).fontIconPicker( {
+		source: fontelloIcons,
+		autoClose: false,
+		appendTo: 'body'
+	} );
+
+	// IconsPerPage
+	$( '#iconsperpage' ).fontIconPicker( {
+		source: icomoonIcons,
+		searchSource: icomoonIconsSearch,
+		iconsPerPage: 50,
+		useAttribute: true,
+		attributeName: 'data-icomoon',
+		appendTo: 'body'
+	} );
+
+	// Icon Generator
+	$( '#icon-generator' ).fontIconPicker( {
+		source: svgs,
+		theme: 'fip-bootstrap',
+		iconGenerator: function( item, flipBoxTitle, index ) {
+			return '<i style="display: flex; align-items: center; justify-content: center; height: 100%;"><svg style="height: 32px; width: auto;" class="svg-icon ' + item + '"><use xlink:href="#' + item + '"></use></svg></i>';
+		},
+		appendTo: 'body'
+	} );
+
+	// has search
+	$( '#has-search' ).fontIconPicker( {
+		source: fontelloIcons,
+		hasSearch: false,
+		appendTo: 'body'
+	} );
+
+	// search placeholder
+	$( '#search-placeholder' ).fontIconPicker( {
+		source: fontelloIcons,
+		searchPlaceholder: 'awesome…',
+		appendTo: 'body'
+	} );
+
+	// empty icon
+	$( '#empty-icon' ).fontIconPicker( {
+		source: fontelloIcons,
+		emptyIcon: false,
+		appendTo: 'body'
+	} );
+
+	// empty icon value
+	$( '#empty-icon-value' ).fontIconPicker( {
+		source: fontelloIcons,
+		emptyIconValue: 'noop',
+		appendTo: 'body'
+	} )
+		.on( 'change', function() {
+			$( '#empty-icon-selected-value' ).html( $( this ).val() );
+		} );
+
+	// Set Icons
+	const dynamicIconsElement = $( '#change-icons' ).fontIconPicker( {
+		source: icomoonIcons,
+		searchSource: icomoonIconsSearch,
+		useAttribute: true,
+		attributeName: 'data-icomoon',
+		theme: 'fip-bootstrap',
+		autoClose: false,
+		appendTo: 'body'
+	} );
+
+	// Add the event listeners and change icons dynamically
+	$( '.change-icons-all' ).on( 'click', function( e ) {
+
+		// Prevent default action
+		e.preventDefault();
+
+		// Set the icon
+		dynamicIconsElement.setIcons( icomoonIcons, icomoonIconsSearch );
+
+		// Change the button appearance
+		$( '.change-icons-buttons button' ).removeClass( 'btn-primary' ).addClass( 'btn-info' );
+		$( this ).removeClass( 'btn-info' ).addClass( 'btn-primary' );
+	} );
+	$( '.change-icons-1' ).on( 'click', function( e ) {
+
+		// Prevent default action
+		e.preventDefault();
+
+		// Set the icon
+		dynamicIconsElement.setIcons( icomoonIcons['Other Icons'], icomoonIconsSearch['Other Icons'] );
+
+		// Change the button appearance
+		$( '.change-icons-buttons button' ).removeClass( 'btn-primary' ).addClass( 'btn-info' );
+		$( this ).removeClass( 'btn-info' ).addClass( 'btn-primary' );
+	} );
+
+	// Set selected icon
+	const setSelectedIcon = $( '#set-icon' ).fontIconPicker( {
+		source: icomoonIcons,
+		searchSource: icomoonIconsSearch,
+		useAttribute: true,
+		attributeName: 'data-icomoon',
+		theme: 'fip-bootstrap',
+		appendTo: 'body'
+	} )
+		.on( 'change', function() {
+			var setIcon = $( this ).val(),
+				icon;
+			if ( '' === setIcon ) {
+				icon = '<i class="icomoon-blocked"></i>';
+			} else {
+				icon = '<i data-icomoon="&#x' + parseInt( setIcon, 10 ).toString( 16 ) + ';"></i>';
+			}
+			$( '#current-set-icon' ).html( icon );
+		} );
+
+	$( '.set-icons-buttons' ).on( 'click', '.btn', function( e ) {
+		var newIcon = $( this ).data( 'iconValue' );
+		setSelectedIcon.setIcon( newIcon );
+	} );
+
+	// Destroy
+	const destroyIconElement = $( '#destroy-api' ).fontIconPicker( {
+			theme: 'fip-bootstrap',
+			appendTo: 'body'
+		} ),
+		destroyButton = $( '.destroy-button-destroy' ),
+		restoreButton = $( '.destroy-button-restore' );
+
+	// Attach the events
+	destroyButton.on( 'click', function() {
+
+		// Destroy the picker
+		destroyIconElement.destroyPicker();
+
+		// Change appearance
+		destroyButton.hide();
+		restoreButton.fadeIn( 'fast' );
+	} );
+
+	restoreButton.on( 'click', function() {
+
+		// Restore the picker
+		destroyIconElement.refreshPicker();
+
+		// Change appearance
+		restoreButton.hide();
+		destroyButton.fadeIn( 'fast' );
+	} );
+
+	// refreshPicker
+	const refreshAPIElement = $( '#refresh-api' ).fontIconPicker( {
+		hasSearch: true,
+		theme: 'fip-bootstrap',
+		appendTo: 'body'
+	} );
+	$( '.refresh-api-buttons button' ).on( 'click', function() {
+
+		// Toggle the hasSearch value
+		if ( $( this ).data( 'searchCanceled' ) ) {
+			refreshAPIElement.refreshPicker( {
+				hasSearch: true,
+				theme: 'fip-bootstrap'
+			} );
+			$( this ).data( 'searchCanceled', false );
+		} else {
+			refreshAPIElement.refreshPicker( {
+				hasSearch: false,
+				theme: 'fip-bootstrap'
+			} );
+			$( this ).data( 'searchCanceled', true );
+		}
+	} );
+
+	// Reposition picker
+	const repositionPicker = $( '#reposition-picker' ).fontIconPicker( {
+		source: fontelloIcons,
+		appendTo: 'body',
+		autoClose: false
+	} );
+	$( '#reposition-button' ).on( 'click', ( e ) => {
+		e.preventDefault();
+		repositionPicker.repositionPicker();
 	} );
 } );
