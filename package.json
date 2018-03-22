@@ -6,8 +6,8 @@
   "scripts": {
     "test": "gulp test",
     "build": "gulp build",
-		"serve": "gulp serve",
-		"prepare": "gulp build"
+    "serve": "gulp serve",
+    "prepare": "gulp build"
   },
   "repository": {
     "type": "git",
@@ -20,9 +20,9 @@
     "iconpicker",
     "fontpicker"
   ],
-	"author": "Swashata Ghosh <swashata4u@gmail.com> (https://wpquark.com)",
+  "author": "Swashata Ghosh <swashata4u@gmail.com> (https://wpquark.com)",
   "contributors": [
-		"Alessandro Benoit <micc83@gmail.com> (http://codeb.it/)"
+    "Alessandro Benoit <micc83@gmail.com> (http://codeb.it/)"
   ],
   "license": "MIT",
   "bugs": {
@@ -47,6 +47,9 @@
     "gulp-sass": "^3.1.0",
     "gulp-sourcemaps": "^2.6.4",
     "gulp-stylelint": "^7.0.0",
+    "jest": "^22.4.3",
+    "jest-environment-jsdom": "^22.4.3",
+    "jest-environment-jsdom-global": "^1.0.3",
     "jquery": "^3.3.1",
     "npm": "^5.7.1",
     "postcss-banner": "^3.0.0",
@@ -64,8 +67,8 @@
   "engines": {
     "node": ">=8.0.0",
     "npm": ">= 5.0.0"
-	},
-	"publishConfig": {
-		"access": "public"
-	}
+  },
+  "publishConfig": {
+    "access": "public"
+  }
 }
