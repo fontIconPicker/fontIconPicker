@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/micc83/fontIconPicker.git"
+    "url": "git+https://github.com/fontIconPicker/fontIconPicker"
   },
   "keywords": [
     "jquery",
@@ -19,15 +19,15 @@
     "iconpicker",
     "fontpicker"
   ],
-  "author": "Alessandro Benoit <micc83@gmail.com> (http://codeb.it/)",
+	"author": "Swashata Ghosh <swashata4u@gmail.com> (https://wpquark.com)",
   "contributors": [
-    "Swashata Ghosh <swashata4u@gmail.com> (https://wpquark.com)"
+		"Alessandro Benoit <micc83@gmail.com> (http://codeb.it/)"
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/micc83/fontIconPicker/issues"
+    "url": "https://github.com/fontIconPicker/fontIconPicker/issues"
   },
-  "homepage": "https://github.com/micc83/fontIconPicker#readme",
+  "homepage": "https://fonticonpicker.github.io",
   "devDependencies": {
     "@babel/cli": "^7.0.0-beta.42",
     "@babel/core": "^7.0.0-beta.42",
