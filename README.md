@@ -5,7 +5,7 @@ jQuery fontIconPicker is a small (`4.05KB` gzipped) jQuery plugin which allows y
 
 **fontIconPicker _v3.0.0_** supports jQuery `1.12.4` through `3.3.0`.
 
-![fontIconPickers](/demo/github-img.png)
+![fontIconPickers](github-img.png)
 
 ## Installation
 

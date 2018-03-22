@@ -1,12 +1,13 @@
 {
   "name": "@fonticonpicker/fonticonpicker",
-  "version": "3.0.0-alpha.0",
+  "version": "3.0.0-alpha.1",
   "description": "jQuery Plugin which allows you to include a simple icon picker with search and pagination inside your administration forms.",
   "main": "dist/js/jquery.fonticonpicker.min.js",
   "scripts": {
     "test": "gulp test",
     "build": "gulp build",
-    "serve": "gulp serve"
+		"serve": "gulp serve",
+		"prepare": "gulp build"
   },
   "repository": {
     "type": "git",
