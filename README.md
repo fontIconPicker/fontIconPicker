@@ -63,10 +63,9 @@ jQuery( '.selector' ).fontIconPicker( {
 } );
 ```
 
-Right now, we do not export (ES6 export) anything in the NPM distribution
-directly. Because, it would have us pollute another global namespace which we
-do not want. We haven't found a way to fix it through rollupjs. If you know a
-solution then let us know.
+Right now, the only feasible way to properly initiate `fontIconPicker` through
+rollupjs is to pass jQuery directly in the `initFontIconPicker` function. If
+you know a better way, feel free to suggest.
 
 ## How it works
  Just include a copy of jQuery, the fontIconPickers script, the fontIconPickers theme and your Font Icons. Now you can trigger it on a `SELECT` or `INPUT[type="text"]` element.
