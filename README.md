@@ -283,6 +283,7 @@ Run these commands with [`npx`](https://www.npmjs.com/package/npx).
 
 ## Credits
 
-jQuery fontIconPicker has been made by [me](http://codeb.it) & [swashata](https://github.com/swashata). You can contact me at micc83@gmail.com or [twitter](https://twitter.com/Micc1983) for any issue or feauture request.
+jQuery fontIconPicker has been made by [Alessandro Benoit](http://codeb.it) & [swashata](https://github.com/swashata). You
+can use the [issue tracker](https://github.com/fontIconPicker/fontIconPicker/issues) for reporting bugs or feature requests.
 
-I really have to thank miniMAC for the idea, Zeno Rocha for jQuery plugin boilerplate, Dave Gandy & KeyaMoon for the beautiful sets of icons and Elliot Condon for the amazing Advanced Custom Field WordPress plugin.
+> Special thanks to miniMAC for the idea, Zeno Rocha for jQuery plugin boilerplate, Dave Gandy & KeyaMoon for the beautiful sets of icons and Elliot Condon for the amazing Advanced Custom Field WordPress plugin.
