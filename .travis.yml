@@ -13,7 +13,7 @@ before_install:
 install:
 - npm install
 script:
-- npx gulp lint:all
+- npx gulp lint
 - npx jest --coverage
 deploy:
   provider: npm
