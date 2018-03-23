@@ -115,6 +115,24 @@ jQuery( document ).ready( function( $ ) {
 		appendTo: 'body'
 	} );
 
+	// Use Attr
+	$( '#use-attr' ).fontIconPicker( {
+		source: icomoonIcons,
+		searchSource: icomoonIconsSearch,
+		useAttribute: true,
+		theme: 'fip-grey',
+		attributeName: 'data-icomoon',
+		emptyIconValue: 'none',
+		appendTo: 'body'
+	} );
+
+	// No use attr
+	$( '#no-use-attr' ).fontIconPicker( {
+		source: fontelloIcons,
+		theme: 'fip-bootstrap',
+		appendTo: 'body'
+	} );
+
 	// Ajax Button
 	const loadAjax = $( '#load-ajax' ).fontIconPicker( {
 		theme: 'fip-bootstrap',

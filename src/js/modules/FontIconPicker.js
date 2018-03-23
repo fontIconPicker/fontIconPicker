@@ -162,8 +162,8 @@ FontIconPicker.prototype = {
 	 * Set icons after the fip has been initialized
 	 */
 	setIcons( newIcons, iconSearch ) {
-		this.settings.source = newIcons;
-		this.settings.searchSource = iconSearch;
+		this.settings.source = $.extend( {}, newIcons );
+		this.settings.searchSource = $.extend( {}, iconSearch );
 		this._initSourceIndex();
 		this._loadCategories();
 		this._resetSearch();
@@ -519,7 +519,7 @@ FontIconPicker.prototype = {
 				for ( const newIconKey in originalSource[categoryLabel] ) {
 
 					// Get the new icon value
-					const newIconValue = originalSource[categoryLabel][newIconKey];
+					let newIconValue = originalSource[categoryLabel][newIconKey];
 
 					// Get the label either from the searchSource if set, otherwise from the source itself
 					const newIconLabel = ( this.settings.searchSource && this.settings.searchSource[categoryLabel] && this.settings.searchSource[categoryLabel][newIconKey] ) ?
