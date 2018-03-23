@@ -3,9 +3,7 @@ env:
     - CC_TEST_REPORTER_ID=6fae2639de837b9388631999b30eb01a5a393c3000016c13c56050c9f1093ad5
 language: node_js
 node_js:
-  - '8'
   - '9'
-  - node
 cache:
   directories:
     - "~/.npm"
