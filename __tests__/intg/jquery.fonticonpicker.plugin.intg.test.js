@@ -1,5 +1,5 @@
 const jQuery = require( 'jquery' );
-const fip = require( '../dist/js/jquery.fonticonpicker.min.js' )( jQuery );
+const fip = require( '../../dist/js/jquery.fonticonpicker.min.js' )( jQuery );
 
 test( 'initialize fontIconPicker', () => {
 	expect( fip ).toBeTruthy();
