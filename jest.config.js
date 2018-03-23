@@ -11,5 +11,7 @@ module.exports = {
 	'modulePaths': [
 		'<rootDir>/node_modules',
 		'<rootDir>/src/js'
-	]
+	],
+	'testMatch': [ '**/__tests__/(intg|unit)/**/*.js?(x)' ],
+	'setupFiles': [ '<rootDir>/__tests__/helpers/setup.js' ]
 };
