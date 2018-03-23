@@ -1,0 +1,10 @@
+version: "2"
+exclude_patterns:
+  - "demo/"
+  - "dist/"
+plugins:
+  eslint:
+    enabled: true
+    channel: "eslint-4"
+  stylelint:
+    enabled: true

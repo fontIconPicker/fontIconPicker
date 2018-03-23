@@ -1,20 +1,26 @@
+env:
+  global:
+    - CC_TEST_REPORTER_ID=6fae2639de837b9388631999b30eb01a5a393c3000016c13c56050c9f1093ad5
 language: node_js
 node_js:
-- '8'
-- '9'
-- node
+  - '8'
+  - '9'
+  - node
 cache:
   directories:
-  - "~/.npm"
-  - node_modules
-before_install:
-- node --version
-- npm --version
+    - "~/.npm"
+    - node_modules
 install:
-- npm install
+  - npm install
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
 script:
-- npx gulp lint
-- npx jest --coverage
+  - npx gulp lint
+  - npx jest --coverage
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 deploy:
   provider: npm
   email: swashata4u@gmail.com
