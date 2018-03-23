@@ -1,8 +1,11 @@
+__tests__/
 src/
 demo/
+coverage/
 .editorconfig
 .eslintignore
 .eslintrc.js
 bower.json
 gulpfile.js
+jest.config.js
 rollup.config.js

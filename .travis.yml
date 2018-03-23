@@ -1,0 +1,25 @@
+language: node_js
+node_js:
+- '8'
+- '9'
+- node
+cache:
+  directories:
+  - "~/.npm"
+  - node_modules
+before_install:
+- node --version
+- npm --version
+install:
+- npm install
+script:
+- npx gulp lint:all
+- npx jest --coverage
+deploy:
+  provider: npm
+  email: swashata4u@gmail.com
+  api_key:
+    secure: HGi4+jTwi3S3L50no17DMCWXUxYlHdG/ZtD+AgPAF9KFIfkZ43XfMJX9mf4TDKH9qgGGkUicBUFJbdWs0QoDA0srfHzg/NnYWCa+lpv2tCM3a843ESK/XJpZrXPrtYwfsN53U78Pk9w24QTTZl4G0YBI0FkfxW8jiBcdtQalJ3c6S+29GAvXDbYBkl+U9HUvO6i8Qq4t4i8dl/pFQtOWkgmxB3obiwc2t8yVQcUONMu+CeKOXFNnRUZQ/Lb0N0gvD5kN9D9dTiBxO5M6I9ijsx4cNDbb+YhWe+D7b9CH1TYhRPaN5s8SyQiC8ji4SYvhDGXxZQLRSaxrTjYhp9IkWaQ1cTyIBGky38rb2uFFgwYHlLbSGwaN2tPOba4tXZcTWhX25g96p+bPX+7jyzYVPhtTWxBmaQe7PfdPql+wTkIiEqFqiC8k7YtB1lM2fHYjQNj411rtOHPHi/3t0JZi4jLN31Oz1lGC3vahp8J9TwfEb0DVWF8XFRFutH6MIluKa+19eeykNDGpXtuLpDhZB6R2mrDGg2hLS/0ZH3xJlmFO1QZl6U+nfnmpN+mbh/dVx6DWNmOPCmrXDc1peFO+Hg2UGD7gQDR45WIifcgKNKzlGgscoJ8L8EYcMqBlk/2T01Wn+2BPjPUDH2pKELGnVU6uqjywneD6IqTBfbqjyVI=
+  on:
+    tags: true
+    repo: fontIconPicker/fontIconPicker
