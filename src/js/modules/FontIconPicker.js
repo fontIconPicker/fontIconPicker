@@ -9,6 +9,9 @@ import debounce from './debounce.js';
 'use strict';
 
 const $ = jQuery;
+
+// A guid for implementing namespaced event
+let guid = 0;
 function FontIconPicker( element, options ) {
 	this.element = $( element );
 	this.settings = $.extend( {}, defaults, options );
@@ -31,6 +34,8 @@ function FontIconPicker( element, options ) {
 	this.currentIcon = false;
 	this.iconsCount = 0;
 	this.open = false;
+	this.guid = guid++;
+	this.eventNameSpace = `.fontIconPicker${guid}`;
 
 	// Set the default values for the search related variables
 	this.searchValues = [];
@@ -194,6 +199,10 @@ FontIconPicker.prototype = {
 			verticalAlign: '',
 			float: ''
 		} );
+
+		// Remove the delegated events
+		$( window ).off( 'resize' + this.eventNameSpace );
+		$( 'html' ).off( 'click' + this.eventNameSpace );
 	},
 
 	/**
@@ -208,7 +217,7 @@ FontIconPicker.prototype = {
 	 * This helps reduce function call unnecessary times.
 	 */
 	_initFixOnResize() {
-		$( window ).on( 'resize.fonticonpicker', debounce( () => {
+		$( window ).on( 'resize' + this.eventNameSpace, debounce( () => {
 			this._fixOnResize();
 		}, this.settings.windowDebounceDelay ) );
 	},
@@ -220,7 +229,7 @@ FontIconPicker.prototype = {
 	 */
 	_initAutoClose() {
 		if ( this.settings.autoClose ) {
-			$( 'html' ).on( 'click', ( event ) => {
+			$( 'html' ).on( 'click' + this.eventNameSpace, ( event ) => {
 
 				// Check if event is coming from selector popup or icon picker
 				const target = event.target;
