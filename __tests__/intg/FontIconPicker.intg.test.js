@@ -10,7 +10,8 @@ const fipObj = {
 	inputCategorizedNoSearch: null,
 	inputUncategorized: null,
 	emptyInput: null,
-	eventInput: null
+	eventInput: null,
+	emuInput: null
 };
 
 // prepare the DOM for testing
@@ -74,6 +75,15 @@ beforeAll( () => {
 		.attr( 'id', 'fip-empty-input' )
 		.appendTo( body );
 	fipObj.emptyInput = new FontIconPicker( emptyInput, {} ); // Init with empty input
+
+	// Emulator
+	const emuInput = jQuery( global.__fipTestDOM__.input )
+		.attr( 'id', 'fip-emu-input' )
+		.appendTo( body );
+	fipObj.emuInput = new FontIconPicker( emuInput, {
+		source: global.__fipTestVar__.classValues.icons,
+		useAttribute: false
+	} );
 
 	// For event testing
 	const eventInput = jQuery( global.__fipTestDOM__.input )
@@ -307,6 +317,110 @@ test( 'setIcon sets selected icon', () => {
 	expect( domElement.val() ).toBe( selectedIcon );
 	expect( fip.iconPicker.find( '.selected-icon' ).html() ).toBe( fip._iconGenerator( selectedIcon ) );
 	expect( fip.iconContainer.find( '.current-icon' ).data( 'fip-value' ) ).toBe( selectedIcon );
+} );
+
+test( 'clicking dropdown opens popup', () => {
+	const fip = fipObj.emuInput;
+
+	// Check open status
+	expect( fip.open ).toBeFalsy();
+	fip.selectorButton.trigger( 'click' );
+	expect( fip.open ).toBeTruthy();
+} );
+
+test( 'clicking icon sets value and closes popup', () => {
+	const fip = fipObj.emuInput;
+	const domElement = fip.element;
+
+	let triggered = false;
+	domElement.one( 'change', () => triggered = true );
+
+	// Check selecting icon from element
+	const clickFip = fip.selectorPopup.find( '.fip-box' ).eq( 2 );
+	clickFip.trigger( 'click' );
+
+	// It should close the popup
+	expect( fip.open ).toBeFalsy();
+
+	// It should set the selected-icon
+	expect( fip.iconPicker.find( '.selected-icon' ).html() ).toBe( clickFip.html() );
+
+	// It should set .curent-icon
+	expect( clickFip.hasClass( 'current-icon' ) ).toBeTruthy();
+
+	// It should update DOM
+	expect( domElement.val() ).toBe( clickFip.data( 'fip-value' ) );
+
+	// It should have triggered event
+	expect( triggered ).toBeTruthy();
+
+	// It should have changed internal value
+	expect( fip.currentIcon ).toBe( clickFip.data( 'fip-value' ) );
+} );
+
+test( 'clicking empty icon resets value', () => {
+	const fip = fipObj.emuInput;
+	const domElement = fip.element;
+
+	// open it
+	fip.selectorButton.trigger( 'click' );
+
+	// Click the empty one
+	const clickFip = fip.selectorPopup.find( '.fip-box' ).eq( 0 );
+	clickFip.trigger( 'click' );
+
+	// Selected icon should be empty
+	expect( fip.iconPicker.find( '.selected-icon' ).html() ).toBe( '<i class="fip-icon-block"></i>' );
+
+	// Nothing should have current-icon class
+	expect( fip.iconContainer.find( '.current-icon' ).length ).toBeFalsy();
+
+	// domElement should have empty value
+	expect( domElement.val() ).toBeFalsy();
+
+	// internal value should be empty
+	expect( fip.currentIcon ).toBeFalsy();
+} );
+
+test( 'changing category changes icon set', () => {
+	const fip = fipObj.emuInput;
+	const categoryDOM = fip.selectorPopup.find( '.icon-category-select' );
+	const categories = categoryDOM.find( 'option' );
+	const sourceOriginal = [ ...fip.settings.source ];
+
+	// Set a random category
+	categoryDOM.val( categories.eq( 1 ).val() ).trigger( 'change' );
+	const sourceOne = [ ...fip.settings.source ];
+
+	// Change the category
+	categoryDOM.val( categories.eq( 2 ).val() ).trigger( 'change' );
+	const sourceTwo = [ ...fip.settings.source ];
+
+	// Both are different
+	expect( sourceOne ).not.toBe( sourceTwo );
+
+	// Now reset the category for further testing
+	categoryDOM.val( categories.eq( 0 ).val() ).trigger( 'change' );
+	expect( fip.settings.source ).toEqual( expect.arrayContaining( sourceOriginal ) );
+} );
+
+test( 'searching changes icon set', () => {
+	const fip = fipObj.emuInput;
+	const searchDOM = fip.selectorPopup.find( '.icons-search-input' );
+	const searchResultExpected = [ 'icon-mail', 'icon-mail-alt' ];
+
+	// Change the search string
+	searchDOM.val( 'icon-mail' ).trigger( 'input' );
+
+	// Check expected source
+	expect( fip.isSearch ).toBeTruthy();
+	expect( fip.iconsSearched ).toEqual( expect.arrayContaining( searchResultExpected ) );
+
+	// Reset search
+	searchDOM.val( '' ).trigger( 'input' );
+
+	// Check expected source
+	expect( fip.isSearch ).toBeFalsy();
 } );
 
 test( 'init sets namespaced events', () => {

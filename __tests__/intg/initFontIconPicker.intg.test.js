@@ -1,9 +1,20 @@
-const jQuery = require( 'jquery' );
-const fip = require( '../../dist/js/jquery.fonticonpicker.min.js' )( jQuery );
+import jQuery from 'jquery';
+import initFontIconPicker from '../../src/js/modules/initFontIconPicker.js';
+let fip;
+
+beforeAll( () => {
+	fip = initFontIconPicker( jQuery );
+} );
 
 test( 'initialize fontIconPicker', () => {
 	expect( fip ).toBeTruthy();
 } );
+
+test( 'initialize fontIconPicker only with jQuery', () => {
+	const doubleFip = initFontIconPicker( {} );
+	expect( doubleFip ).toBeFalsy();
+} );
+
 
 test( 'attach fontIconPicker to jQuery.fn', () => {
 	expect( jQuery.fn.fontIconPicker ).toBeDefined();

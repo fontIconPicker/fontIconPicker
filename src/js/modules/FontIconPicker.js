@@ -256,7 +256,7 @@ FontIconPicker.prototype = {
 	_initIconSelect() {
 		this.selectorPopup.on( 'click', '.fip-box', e => {
 			const fipBox = $( e.currentTarget );
-			this._setSelectedIcon( fipBox.attr( 'data-fip-value' ), fipBox.attr( 'title' ) );
+			this._setSelectedIcon( fipBox.attr( 'data-fip-value' ) );
 			this._toggleIconSelector();
 		} );
 	},
