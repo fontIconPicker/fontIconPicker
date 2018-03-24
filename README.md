@@ -1,9 +1,11 @@
 jQuery fontIconPicker `v3.0.0` [![Build Status](https://travis-ci.org/fontIconPicker/fontIconPicker.svg?branch=master)](https://travis-ci.org/fontIconPicker/fontIconPicker) [![Maintainability](https://api.codeclimate.com/v1/badges/701cba42caf2db204315/maintainability)](https://codeclimate.com/github/fontIconPicker/fontIconPicker/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/701cba42caf2db204315/test_coverage)](https://codeclimate.com/github/fontIconPicker/fontIconPicker/test_coverage)
 ==============================
 
-jQuery fontIconPicker is a small (`4.05KB` gzipped) jQuery plugin which allows you to include an elegant icon picker with categories, search and pagination inside your administration forms. The list of icons can be loaded manually using a `SELECT` field, an `Array` or `Object` of icons or directly from a Fontello `config.json` or IcoMoon `selection.json` file. Go to the [official plugin page](http://codeb.it/fonticonpicker) for examples and documentation.
+jQuery fontIconPicker is a small (`4.05KB` gzipped) jQuery plugin which allows you to include an elegant icon picker with categories, search and pagination inside your administration forms. The list of icons can be loaded manually using a `SELECT` field, an `Array` or `Object` of icons or directly from a Fontello `config.json` or IcoMoon `selection.json` file. Go to the [official plugin page](https://fonticonpicker.github.io) for examples and documentation.
 
 **fontIconPicker _v3.0.0_** supports jQuery `1.12.4` through `3.3.0`.
+
+> Originally developed at [micc83/fontIconPicker](https://github.com/micc83/fontIconPicker) and now moved into separate [organization](https://github.com/fontIconPicker) for better collaboration.
 
 ![fontIconPickers](github-img.png)
 
@@ -11,7 +13,7 @@ jQuery fontIconPicker is a small (`4.05KB` gzipped) jQuery plugin which allows y
 
 ### With NPM/YARN
 
-fontIconPicker v3.0.0 has been released over NPM. So you can either use NPM to install or download a [release](https://github.com/micc83/fontIconPicker/releases).
+fontIconPicker v3.0.0 has been released over NPM. So you can either use NPM to install or download a [release](https://github.com/fontIconPicker/fontIconPicker/releases).
 
 ```bash
 npm install jquery@1.12.4 @fonticonpicker/fonticonpicker --save
@@ -28,7 +30,12 @@ jQuery( '.selector' ).fontIconPicker( {
 } );
 ```
 
-### CDN support
+### Global `script` / CDN support
+
+You can put fontIconPicker dependencies directly in your `html` with `<script>`
+and `<link>` tags. Go to [fontIconPicker Releases](https://github.com/fontIconPicker/fontIconPicker/releases) and download the
+`fontIconPicker.zip` file from latest Assets. It will contain all scripts and
+styles built for production use.
 
 You can also use CDN from [unpkg.com](https://unpkg.com/#/).
 
@@ -49,6 +56,8 @@ You can also use CDN from [unpkg.com](https://unpkg.com/#/).
 <script type="text/javascript" src="https://unpkg.com/@fonticonpicker/fonticonpicker/dist/js/jquery.fonticonpicker.min.js"></script>
 ```
 
+### Using ES6 Module
+
 If you wish to use `ES6` module, then you have to initialize manually.
 
 ```js
@@ -68,7 +77,7 @@ rollupjs is to pass jQuery directly in the `initFontIconPicker` function. If
 you know a better way, feel free to suggest.
 
 ## How it works
- Just include a copy of jQuery, the fontIconPickers script, the fontIconPickers theme and your Font Icons. Now you can trigger it on a `SELECT` or `INPUT[type="text"]` element.
+Just include a copy of jQuery, the fontIconPickers script, the fontIconPickers theme and your Font Icons. Now you can trigger it on a `SELECT` or `INPUT[type="text"]` element.
 
 ### Include the JavaScript
  ```html
@@ -224,7 +233,8 @@ $('.mycontainer').on( 'scroll', function() {
 } );
 ```
 
-Options and APIs are discussed in details with live examples at the project page.
+Options and APIs are discussed in details with live examples at the
+[project page](https://fonticonpicker.github.io).
 
 ### Important notes for local demo
 
@@ -267,6 +277,26 @@ npx gulp serve
 ```
 
 This will serve the changes live in your browser. Access it through `http://localhost:3000`.
+
+### Automated git hooks
+
+When you run `npm install` for the first time, [husky](https://github.com/typicode/husky) setups a few git hooks. It specifically
+does two things.
+
+1. Checks for proper [commit message](http://marionebl.github.io/commitlint/#/concepts-commit-conventions).
+2. Runs linting of `js` and `scss` files to avoid any error before push.
+
+### Continuous Integration (CI)
+
+Additionally we run test suits for each push on [travis ci](https://travis-ci.org/fontIconPicker/fontIconPicker).
+
+Make sure it passes by running
+
+```bash
+npm run test
+```
+
+locally on your machine. It lints all files and runs [`jest`](https://facebook.github.io/jest/) tests.
 
 ### Available Gulp Commands
 

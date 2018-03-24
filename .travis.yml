@@ -38,7 +38,7 @@ deploy:
     file_glob: true
     file:
       - fontIconPicker.zip
-      - dist/*
+      - dist/**/*.*
     on:
       tags: true
       repo: fontIconPicker/fontIconPicker
