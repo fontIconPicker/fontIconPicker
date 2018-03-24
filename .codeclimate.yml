@@ -41,9 +41,3 @@ exclude_patterns:
   - "dist/"
   - "__tests__/"
   - "gulpfile.js"
-plugins:
-  eslint:
-    enabled: true
-    channel: "eslint-4"
-  stylelint:
-    enabled: true
