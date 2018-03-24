@@ -2,10 +2,13 @@ __tests__/
 src/
 demo/
 coverage/
+.codeclimate.yml
 .editorconfig
 .eslintignore
 .eslintrc.js
+.travis.yml
 bower.json
+commitlint.config.js
 gulpfile.js
 jest.config.js
 rollup.config.js
