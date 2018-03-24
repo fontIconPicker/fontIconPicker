@@ -78,6 +78,13 @@ function fontIconPickerShim( $ ) {
 			} );
 		};
 
+		// set page
+		this.setPage = ( pageNum ) => {
+			this.each( function() {
+				$.data( this, 'fontIconPicker' ).setPage( pageNum );
+			} );
+		};
+
 		return this;
 	};
 

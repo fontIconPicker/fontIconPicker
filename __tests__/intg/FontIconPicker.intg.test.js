@@ -319,6 +319,16 @@ test( 'setIcon sets selected icon', () => {
 	expect( fip.iconContainer.find( '.current-icon' ).data( 'fip-value' ) ).toBe( selectedIcon );
 } );
 
+test( 'setPage sets page', () => {
+	const fip = fipObj.inputCategorizedNoSearch;
+	const domElement = fip.element;
+
+	// Set the page
+	fip.setPage( 2 );
+
+	expect( fip.currentPage ).toBe( 2 );
+} );
+
 test( 'clicking dropdown opens popup', () => {
 	const fip = fipObj.emuInput;
 

@@ -21,7 +21,10 @@ function FontIconPicker( element, options ) {
 	this.iconPicker = $( '<div/>', {
 		class : 'icons-selector',
 		style : 'position: relative',
-		html  : this._getPickerTemplate()
+		html  : this._getPickerTemplate(),
+		attr: {
+			'data-fip-origin': this.element.attr( 'id' )
+		}
 	} );
 	this.iconContainer = this.iconPicker.find( '.fip-icons-container' );
 	this.searchIcon = this.iconPicker.find( '.selector-search i' );
@@ -213,6 +216,21 @@ FontIconPicker.prototype = {
 	},
 
 	/**
+	 * Manually set page
+	 * @param {int} pageNum
+	 */
+	setPage( pageNum ) {
+		if ( pageNum > this.totalPage ) {
+			pageNum = this.totalPage;
+		}
+		if ( 1 > pageNum ) {
+			pageNum = 1;
+		}
+		this.currentPage = pageNum;
+		this._renderIconContainer();
+	},
+
+	/**
 	 * Initialize Fix on window resize with debouncing
 	 * This helps reduce function call unnecessary times.
 	 */
@@ -393,7 +411,7 @@ FontIconPicker.prototype = {
 	 */
 	_getPickerTemplate() {
 		const pickerTemplate = `
-<div class="selector">
+<div class="selector" data-fip-origin="${this.element.attr( 'id' )}">
 	<span class="selected-icon">
 		<i class="fip-icon-block"></i>
 	</span>
@@ -401,7 +419,7 @@ FontIconPicker.prototype = {
 		<i class="fip-icon-down-dir"></i>
 	</span>
 </div>
-<div class="selector-popup-wrap">
+<div class="selector-popup-wrap" data-fip-origin="${this.element.attr( 'id' )}">
 	<div class="selector-popup" style="display: none;"> ${ ( this.settings.hasSearch ) ?
 		`<div class="selector-search">
 			<input type="text" name="" value="" placeholder="${ this.settings.searchPlaceholder }" class="icons-search-input"/>

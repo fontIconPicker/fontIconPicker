@@ -32,6 +32,7 @@ test( 'fontIconPicker has APIs', () => {
 	expect( typeof testFip.destroyPicker ).toBe( 'function' );
 	expect( typeof testFip.refreshPicker ).toBe( 'function' );
 	expect( typeof testFip.repositionPicker ).toBe( 'function' );
+	expect( typeof testFip.setPage ).toBe( 'function' );
 } );
 
 test( 'API setIcons work', () => {
@@ -44,6 +45,12 @@ test( 'API setIcon work', () => {
 	const setIcon = testSelect.data( 'fontIconPicker' ).setIcon = jest.fn();
 	testFip.setIcon( '' );
 	expect( setIcon ).toHaveBeenCalledTimes( 1 );
+} );
+
+test( 'API setPage work', () => {
+	const setPage = testSelect.data( 'fontIconPicker' ).setPage = jest.fn();
+	testFip.setPage( 2 );
+	expect( setPage ).toHaveBeenLastCalledWith( 2 );
 } );
 
 test( 'API destroyPicker work', () => {
