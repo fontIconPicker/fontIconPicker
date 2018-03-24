@@ -2,6 +2,7 @@ version: "2"
 exclude_patterns:
   - "demo/"
   - "dist/"
+  - "__tests__/"
 plugins:
   eslint:
     enabled: true
