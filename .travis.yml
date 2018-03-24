@@ -19,11 +19,28 @@ script:
   - npx jest --coverage
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+before_deploy:
+  - npm run build
+  - zip -r fontIconPicker.zip dist/*
 deploy:
-  provider: npm
-  email: swashata4u@gmail.com
-  api_key:
-    secure: HGi4+jTwi3S3L50no17DMCWXUxYlHdG/ZtD+AgPAF9KFIfkZ43XfMJX9mf4TDKH9qgGGkUicBUFJbdWs0QoDA0srfHzg/NnYWCa+lpv2tCM3a843ESK/XJpZrXPrtYwfsN53U78Pk9w24QTTZl4G0YBI0FkfxW8jiBcdtQalJ3c6S+29GAvXDbYBkl+U9HUvO6i8Qq4t4i8dl/pFQtOWkgmxB3obiwc2t8yVQcUONMu+CeKOXFNnRUZQ/Lb0N0gvD5kN9D9dTiBxO5M6I9ijsx4cNDbb+YhWe+D7b9CH1TYhRPaN5s8SyQiC8ji4SYvhDGXxZQLRSaxrTjYhp9IkWaQ1cTyIBGky38rb2uFFgwYHlLbSGwaN2tPOba4tXZcTWhX25g96p+bPX+7jyzYVPhtTWxBmaQe7PfdPql+wTkIiEqFqiC8k7YtB1lM2fHYjQNj411rtOHPHi/3t0JZi4jLN31Oz1lGC3vahp8J9TwfEb0DVWF8XFRFutH6MIluKa+19eeykNDGpXtuLpDhZB6R2mrDGg2hLS/0ZH3xJlmFO1QZl6U+nfnmpN+mbh/dVx6DWNmOPCmrXDc1peFO+Hg2UGD7gQDR45WIifcgKNKzlGgscoJ8L8EYcMqBlk/2T01Wn+2BPjPUDH2pKELGnVU6uqjywneD6IqTBfbqjyVI=
-  on:
-    tags: true
-    repo: fontIconPicker/fontIconPicker
+  - provider: npm
+    email: swashata4u@gmail.com
+    api_key:
+      secure: HGi4+jTwi3S3L50no17DMCWXUxYlHdG/ZtD+AgPAF9KFIfkZ43XfMJX9mf4TDKH9qgGGkUicBUFJbdWs0QoDA0srfHzg/NnYWCa+lpv2tCM3a843ESK/XJpZrXPrtYwfsN53U78Pk9w24QTTZl4G0YBI0FkfxW8jiBcdtQalJ3c6S+29GAvXDbYBkl+U9HUvO6i8Qq4t4i8dl/pFQtOWkgmxB3obiwc2t8yVQcUONMu+CeKOXFNnRUZQ/Lb0N0gvD5kN9D9dTiBxO5M6I9ijsx4cNDbb+YhWe+D7b9CH1TYhRPaN5s8SyQiC8ji4SYvhDGXxZQLRSaxrTjYhp9IkWaQ1cTyIBGky38rb2uFFgwYHlLbSGwaN2tPOba4tXZcTWhX25g96p+bPX+7jyzYVPhtTWxBmaQe7PfdPql+wTkIiEqFqiC8k7YtB1lM2fHYjQNj411rtOHPHi/3t0JZi4jLN31Oz1lGC3vahp8J9TwfEb0DVWF8XFRFutH6MIluKa+19eeykNDGpXtuLpDhZB6R2mrDGg2hLS/0ZH3xJlmFO1QZl6U+nfnmpN+mbh/dVx6DWNmOPCmrXDc1peFO+Hg2UGD7gQDR45WIifcgKNKzlGgscoJ8L8EYcMqBlk/2T01Wn+2BPjPUDH2pKELGnVU6uqjywneD6IqTBfbqjyVI=
+    on:
+      tags: true
+      repo: fontIconPicker/fontIconPicker
+    skip_cleanup: true
+    overwrite: true
+  - provider: releases
+    api_key:
+      secure: "mtS3RvL/lyZnZUh6+bvrbLcHCvq03GNlGlpW1oQMJFrdBrYwYni3nEqD9Oh3xbE//RFDz2xy2oVM0AiXNnbJJ7Ta7IxTyWXNI2SdiLilc6HSfYsh5ZkbpywyI6gS3gwxjUdm9+UH5dnYfwFzYSZYBwVDVAxw89X1WT7Ep2vZxtI6OeJMBrnu3faMDG+Owlj143FSN2wwma2ZxNSij94dbbm3O054cfiLbT04HIqpK4wyIpyMYJqtxxue9/C8i9WR/tUcg0isqMAyJGC4HATuNQDiaZRs4KooCQFAv2I5u0ZZepK57DbLd+ypoVQC2i6yn7VXXltYqRHCD8CHrlevlKVzQJIfs8N4e16Mb6r7ECAz8//1p25Z6NZ/vUvaEbJY81okZ4sapuBhQx98PVcS0IOoQXTHkxANUxNHZZOlwPfiMM8i/5CPDEjJkKt2+yMIDGTnfdEfgLQXUi0y1/kPXQUs0TRnxVcs27NlKALOkiaosoXDUjRTFmF/HurX5akxk9GPqTcGxXzSs2LYRTehd2iLrL9YtKT+RnpHi77gSjnHQ2SWFMiX+3SPtuXTFaQJT8cSr35zs6KM7sg0H7PugtxkeWn9/fD0BOhPqiArPmFA8RHKrb1eLHxh4xJqTo7Pwdv5QusNrtsaQrbswW+VedkL9qagP48MZOwPLWtU5y8="
+    file_glob: true
+    file:
+      - fontIconPicker.zip
+      - dist/*
+    on:
+      tags: true
+      repo: fontIconPicker/fontIconPicker
+    skip_cleanup: true
+    overwrite: true
