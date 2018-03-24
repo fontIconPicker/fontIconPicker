@@ -1,0 +1,12 @@
+{
+    "compilerOptions": { },
+    "typeAcquisition": {
+        "include": [
+			"jasmine"
+        ],
+        "exclude": [
+			"chai",
+			"mocha"
+        ]
+    }
+}

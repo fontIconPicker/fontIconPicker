@@ -10,11 +10,11 @@
     "prepare": "gulp build"
   },
   "repository": {
-		"type": "git",
+    "type": "git",
     "url": "git+https://github.com/fontIconPicker/fontIconPicker"
   },
   "keywords": [
-		"jquery",
+    "jquery",
     "font",
     "picker",
     "iconpicker",
@@ -22,15 +22,15 @@
   ],
   "author": "Swashata Ghosh <swashata4u@gmail.com> (https://wpquark.com)",
   "contributors": [
-		"Alessandro Benoit <micc83@gmail.com> (http://codeb.it/)"
+    "Alessandro Benoit <micc83@gmail.com> (http://codeb.it/)"
   ],
   "license": "MIT",
   "bugs": {
-		"url": "https://github.com/fontIconPicker/fontIconPicker/issues"
+    "url": "https://github.com/fontIconPicker/fontIconPicker/issues"
   },
   "homepage": "https://fonticonpicker.github.io",
   "devDependencies": {
-		"@babel/cli": "^7.0.0-beta.42",
+    "@babel/cli": "^7.0.0-beta.42",
     "@babel/core": "^7.0.0-beta.42",
     "@babel/plugin-external-helpers": "^7.0.0-beta.42",
     "@babel/plugin-transform-modules-commonjs": "^7.0.0-beta.42",
@@ -68,19 +68,19 @@
     "stylelint-scss": "^2.5.0"
   },
   "peerDependencies": {
-		"jquery": ">=1.12.4"
+    "jquery": ">=1.12.4"
   },
   "engines": {
-		"node": ">=8.0.0",
+    "node": ">=8.0.0",
     "npm": ">= 5.0.0"
   },
   "publishConfig": {
-		"access": "public"
+    "access": "public"
   },
-	"husky": {
-		"hooks": {
-			"commit-msg": "commitlint -e $GIT_PARAMS",
-			"pre-push" : "gulp lint"
-		}
-	}
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -e $GIT_PARAMS",
+      "pre-push": "gulp lint"
+    }
+  }
 }
