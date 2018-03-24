@@ -40,6 +40,7 @@ exclude_patterns:
   - "demo/"
   - "dist/"
   - "__tests__/"
+  - "gulpfile.js"
 plugins:
   eslint:
     enabled: true
