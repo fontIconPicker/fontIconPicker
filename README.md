@@ -1,5 +1,4 @@
 jQuery fontIconPicker `v3.0.0` [![Build Status](https://travis-ci.org/fontIconPicker/fontIconPicker.svg?branch=master)](https://travis-ci.org/fontIconPicker/fontIconPicker) [![Maintainability](https://api.codeclimate.com/v1/badges/701cba42caf2db204315/maintainability)](https://codeclimate.com/github/fontIconPicker/fontIconPicker/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/701cba42caf2db204315/test_coverage)](https://codeclimate.com/github/fontIconPicker/fontIconPicker/test_coverage) [![Cypress.io tests](https://img.shields.io/badge/cypress.io-tests-green.svg?style=flat-square)](https://dashboard.cypress.io/#/projects/agegn4/runs)
-
 ==============================
 
 jQuery fontIconPicker is a small (`4.05KB` gzipped) jQuery plugin which allows you to include an elegant icon picker with categories, search and pagination inside your administration forms. The list of icons can be loaded manually using a `SELECT` field, an `Array` or `Object` of icons or directly from a Fontello `config.json` or IcoMoon `selection.json` file. Go to the [official plugin page](https://fonticonpicker.github.io) for examples and documentation.
@@ -43,15 +42,15 @@ You can also use CDN from [unpkg.com](https://unpkg.com/#/).
 ```html
 <!-- styles -->
 <!-- base | always include -->
-<link rel="stylesheet" type="text/css" href="https://unpkg.com/@fonticonpicker/fonticonpicker@3.0.0-alpha.0/dist/css/base/jquery.fonticonpicker.min.css">
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/@fonticonpicker/fonticonpicker/dist/css/base/jquery.fonticonpicker.min.css">
 
 <!-- default grey-theme -->
-<link rel="stylesheet" type="text/css" href="https://unpkg.com/@fonticonpicker/fonticonpicker@3.0.0-alpha.0/dist/css/themes/grey-theme/jquery.fonticonpicker.grey.min.css">
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/@fonticonpicker/fonticonpicker/dist/css/themes/grey-theme/jquery.fonticonpicker.grey.min.css">
 
 <!-- optional themes | no need to include default theme -->
-<link rel="stylesheet" type="text/css" href="https://unpkg.com/@fonticonpicker/fonticonpicker@3.0.0-alpha.0/dist/css/themes/bootstrap-theme/jquery.fonticonpicker.bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="https://unpkg.com/@fonticonpicker/fonticonpicker@3.0.0-alpha.0/dist/css/themes/dark-grey-theme/jquery.fonticonpicker.darkgrey.min.css">
-<link rel="stylesheet" type="text/css" href="https://unpkg.com/@fonticonpicker/fonticonpicker@3.0.0-alpha.0/dist/css/themes/inverted-theme/jquery.fonticonpicker.inverted.min.css">
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/@fonticonpicker/fonticonpicker/dist/css/themes/bootstrap-theme/jquery.fonticonpicker.bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/@fonticonpicker/fonticonpicker/dist/css/themes/dark-grey-theme/jquery.fonticonpicker.darkgrey.min.css">
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/@fonticonpicker/fonticonpicker/dist/css/themes/inverted-theme/jquery.fonticonpicker.inverted.min.css">
 
 <!-- scripts -->
 <script type="text/javascript" src="https://unpkg.com/@fonticonpicker/fonticonpicker/dist/js/jquery.fonticonpicker.min.js"></script>
@@ -212,13 +211,13 @@ persists between open and close state until user has changed pagination manually
 
 ```js
 $picker.setPage( 2 );
-$picker.setPage( 'first );
-$picker.setPage( 'last );
+$picker.setPage( 'first' );
+$picker.setPage( 'last' );
 ```
 
-Method accepts numbers and only two special strings. Number corresponds to the
-page number starting from 1.
+Method accepts numbers and only two special strings.
 
+* Number corresponds to the page number starting from 1.
 * `first` will set the pagination to first page.
 * `last` will set the pagination to last page.
 
@@ -257,6 +256,8 @@ Options and APIs are discussed in details with live examples at the
 ### Important notes for local demo
 
 Only when loading demo locally: In firefox fontIconPicker icons won't be shown correctly because of CORS. For the same reason "Load icons from Fontello JSON config file" won't work on Chrome or IE 10. If you need to do some local testing you can disable strict_origin_policy at your risk.
+
+Use the bundled [**Browser**sync](https://browsersync.io/) server to run the demo instead. See [Setup](#setup) to learn how.
 
 ## Browser Compatibility
 
@@ -315,6 +316,32 @@ npm run test
 ```
 
 locally on your machine. It lints all files and runs [`jest`](https://facebook.github.io/jest/) tests.
+
+### Running tests locally
+
+fontIconPicker has two sets of tests.
+
+#### Unit & Integration test with [jest](https://facebook.github.io/jest/)
+
+```bash
+npx jest
+```
+
+#### End2End test with [cypress](https://www.cypress.io/)
+
+```bash
+npx cypress open
+```
+
+Then run the tests from the app. Or
+
+```bash
+npx cypress run
+```
+
+To run the tests in the terminal from a headless browser. You do not need to
+worry about setting up test environment as it is taken care of automatically
+by [cypress](https://www.cypress.io/).
 
 ### Available Gulp Commands
 
