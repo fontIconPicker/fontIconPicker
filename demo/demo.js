@@ -341,6 +341,21 @@ jQuery( document ).ready( function( $ ) {
 		setSelectedIcon.setIcon( newIcon );
 	} );
 
+	const setPage = $( '#set-page' ).fontIconPicker( {
+		source: icomoonIcons,
+		searchSource: icomoonIconsSearch,
+		useAttribute: true,
+		attributeName: 'data-icomoon',
+		theme: 'fip-bootstrap',
+		appendTo: 'body',
+		autoClose: false
+	} );
+
+	$( '.set-pages-buttons' ).on( 'click', '.btn', function( e ) {
+		var newPage = $( this ).data( 'pageValue' );
+		setPage.setPage( newPage );
+	} );
+
 	// Destroy
 	const destroyIconElement = $( '#destroy-api' ).fontIconPicker( {
 			theme: 'fip-bootstrap',

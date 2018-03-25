@@ -110,6 +110,10 @@ describe( 'fonticonpicker ui', () => {
 
 	it( 'changed icon-set on pagination', () => {
 
+		const aFip = '.icons-selector[data-fip-origin="set-page"]';
+		const aFipButton = '.selector[data-fip-origin="set-page"] .selector-button';
+		const aFipPopup = '.selector-popup-wrap[data-fip-origin="set-page"] .selector-popup';
+
 		// open it up
 		cy.get( aFipButton ).click().then( () => {
 			cy.get( aFipPopup ).find( '.selector-pages' ).then( $pager => {
@@ -161,6 +165,16 @@ describe( 'fonticonpicker ui', () => {
 							// container has restored
 							expect( changedValue ).eq( currentValue );
 						} );
+
+					// change it to last
+					cy.get( '.set-pages-last' ).click().then( () => {
+						const changedValue = $container.html();
+						cy.get( aFipPopup ).find( '.selector-arrow-right' ).should( 'not.be.visible' );
+						expect( changedValue ).not.eq( currentValue );
+						cy.get( aFipPopup ).find( '.selector-arrow-left' ).click().then( () => {
+							cy.get( aFipPopup ).find( '.selector-arrow-right' ).should( 'be.visible' );
+						} );
+					} );
 				} );
 
 			} );

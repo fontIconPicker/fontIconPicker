@@ -220,12 +220,23 @@ FontIconPicker.prototype = {
 	 * @param {int} pageNum
 	 */
 	setPage( pageNum ) {
+		if ( 'first' == pageNum ) {
+			pageNum = 1;
+		}
+		if ( 'last' == pageNum ) {
+			pageNum = this.totalPage;
+		}
+		pageNum = parseInt( pageNum, 10 );
+		if ( isNaN( pageNum ) ) {
+			pageNum = 1;
+		}
 		if ( pageNum > this.totalPage ) {
 			pageNum = this.totalPage;
 		}
 		if ( 1 > pageNum ) {
 			pageNum = 1;
 		}
+
 		this.currentPage = pageNum;
 		this._renderIconContainer();
 	},

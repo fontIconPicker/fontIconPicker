@@ -133,3 +133,6 @@ $RECYCLE.BIN/
 
 # Build Specific
 dist/
+
+# Cypress videos
+cypress/videos

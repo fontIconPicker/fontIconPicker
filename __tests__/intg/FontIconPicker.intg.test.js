@@ -327,6 +327,22 @@ test( 'setPage sets page', () => {
 	fip.setPage( 2 );
 
 	expect( fip.currentPage ).toBe( 2 );
+
+	// special cases
+	fip.setPage( 'first' );
+	expect( fip.currentPage ).toBe( 1 );
+
+	fip.setPage( 'last' );
+	expect( fip.currentPage ).toBe( fip.totalPage );
+
+	fip.setPage( 'foo' );
+	expect( fip.currentPage ).toBe( 1 );
+
+	fip.setPage( -1 );
+	expect( fip.currentPage ).toBe( 1 );
+
+	fip.setPage( 100000 );
+	expect( fip.currentPage ).toBe( fip.totalPage );
 } );
 
 test( 'clicking dropdown opens popup', () => {
