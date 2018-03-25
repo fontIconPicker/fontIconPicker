@@ -12,7 +12,7 @@
 
 
 	<!-- fip stuff -->
-	<script src="../dist/js/jquery.fonticonpicker.min.js"></script>
+	<script src="../dist/js/jquery.fonticonpicker.js"></script>
 	<link rel="stylesheet" href="../dist/css/base/jquery.fonticonpicker.min.css">
 	<link rel="stylesheet" href="../dist/css/themes/bootstrap-theme/jquery.fonticonpicker.bootstrap.min.css">
 	<link rel="stylesheet" href="../dist/css/themes/dark-grey-theme/jquery.fonticonpicker.darkgrey.min.css">
@@ -94,12 +94,33 @@
 				</div>
 			</div>
 			<div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
-				<h3 class="text-center">Load from AJAX</h3>
+				<h3 class="text-center"><code>setIcons</code> category FontAwesome</h3>
 				<div class="p-5 border">
-					<input type="text" id="load-ajax" name="e14_element" />
 					<span id="ajax-button">
-						<button autocomplete="off" type="button" class="btn btn-primary">Load from FontAwesome</button>
+						<button autocomplete="off" type="button" class="btn btn-primary">Load</button>
 					</span>
+					<br><br>
+					<input type="text" id="load-ajax" name="e14_element" />
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+				<h3 class="text-center"><code>setIcons</code> no-category Fontello</h3>
+				<div class="p-5 border">
+					<span id="seticons-no-cat-fnt-button">
+						<button autocomplete="off" type="button" class="btn btn-primary">Load</button>
+					</span>
+					<br><br>
+					<input type="text" id="seticons-no-cat-fnt" name="e14_element" />
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+				<h3 class="text-center"><code>setIcons</code> no-category Icomoon</h3>
+				<div class="p-5 border">
+					<span id="seticons-no-cat-icm-button">
+						<button autocomplete="off" type="button" class="btn btn-primary">Load</button>
+					</span>
+					<br><br>
+					<input type="text" id="seticons-no-cat-icm" name="e14_element" />
 				</div>
 			</div>
 			<div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">

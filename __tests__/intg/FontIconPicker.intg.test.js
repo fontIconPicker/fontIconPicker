@@ -267,7 +267,7 @@ test( 'populate uncategorized input without custom search', () => {
 		.toEqual( expect.arrayContaining( flattenedIcons ) );
 } );
 
-test( 'setIcons sets new icons', () => {
+test( 'setIcons sets new icons with category', () => {
 	const fip = fipObj.emptyInput;
 	fip.setIcons( global.__fipTestVar__.attributeValues.icons, global.__fipTestVar__.attributeValues.search );
 
@@ -304,6 +304,30 @@ test( 'setIcons sets new icons', () => {
 		// The first one has label for all categories
 		expect( popUpCategorySelector.eq( i + 1 ).text() ).toBe( value );
 	} );
+} );
+
+test( 'setIcons sets new icons without category', () => {
+	const fip = fipObj.emptyInput;
+	fip.setIcons( global.__fipTestVar__.attributeValues.icons.Emoticons, global.__fipTestVar__.attributeValues.search.Emoticons );
+
+	const iconsTruth = global.__fipTestVar__.attributeValues.icons.Emoticons;
+	const searchTruth = global.__fipTestVar__.attributeValues.search.Emoticons;
+	const flattenedIcons = iconsTruth.map( val => val.toString() );
+	const flattenedSearch = searchTruth.map( val => val.toString() );
+
+	// check if categorized
+	expect( fip.isCategorized ).toBe( false );
+
+	// Check sources
+	expect( fip.settings.source ).toHaveLength( flattenedIcons.length );
+	expect( fip.settings.source )
+		.toEqual( expect.arrayContaining( flattenedIcons ) );
+
+	// Check search sources
+	expect( fip.searchValues )
+		.toHaveLength( flattenedSearch.length );
+	expect( fip.searchValues )
+		.toEqual( expect.arrayContaining( flattenedSearch ) );
 } );
 
 test( 'setIcon sets selected icon', () => {

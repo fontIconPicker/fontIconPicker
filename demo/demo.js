@@ -171,7 +171,7 @@ jQuery( document ).ready( function( $ ) {
 					$( '#ajax-button button' )
 						.removeClass( 'btn-primary' )
 						.addClass( 'btn-success' )
-						.text( 'Successfully loaded icons' )
+						.text( 'Succ' )
 						.prop( 'disabled', true );
 				}, 1000 );
 			} )
@@ -181,8 +181,112 @@ jQuery( document ).ready( function( $ ) {
 				$( '#ajax-button button' )
 					.removeClass( 'btn-primary' )
 					.addClass( 'btn-danger' )
-					.text( 'Error: Try Again?' )
+					.text( 'Err' )
 					.prop( 'disabled', false );
+			} );
+		e.stopPropagation();
+	} );
+
+	// setIcons no category fontello
+	const loadAjaxNoCatFontello = $( '#seticons-no-cat-fnt' ).fontIconPicker( {
+		theme: 'fip-bootstrap',
+		appendTo: 'body',
+		useAttribute: false
+	} );
+	$( '#seticons-no-cat-fnt-button button' ).on( 'click', function( e ) {
+		const button = $( this );
+
+		// Prevent default
+		e.preventDefault();
+
+		// Show processing message
+		button.prop( 'disabled', true )
+			.html( '<i class="icon-cog demo-animate-spin"></i> Please wait…' );
+
+		// Get the JSON file
+		$.ajax( {
+			url: 'fontello-7275ca86/config.json',
+			type: 'GET',
+			dataType: 'json'
+		} )
+			.done( function( response ) {
+
+				var fontelloJSONIcons = [];
+
+				// Push the fonts into the array
+				$.each( response.glyphs, function( i, v ) {
+					fontelloJSONIcons.push( response.css_prefix_text + v.css );
+				} );
+
+				// Set new fonts
+				loadAjaxNoCatFontello.setIcons( fontelloJSONIcons );
+
+				// Show success message and disable
+				button.removeClass( 'btn-primary' ).addClass( 'btn-success' ).text( 'Succ' ).prop( 'disabled', true );
+
+			} )
+			.fail( function() {
+
+				// Show error message and enable
+				button.removeClass( 'btn-primary' ).addClass( 'btn-danger' ).text( 'Err' ).prop( 'disabled', false );
+			} );
+		e.stopPropagation();
+	} );
+
+	// setIcons no category icomoon
+	const loadAjaxNoCatIcomoon = $( '#seticons-no-cat-icm' ).fontIconPicker( {
+		theme: 'fip-bootstrap',
+		appendTo: 'body',
+		useAttribute: false
+	} );
+	$( '#seticons-no-cat-icm-button button' ).on( 'click', function( e ) {
+		const button = $( this );
+
+		// Prevent default
+		e.preventDefault();
+
+		// Show processing message
+		button.prop( 'disabled', true )
+			.html( '<i class="icon-cog demo-animate-spin"></i> Please wait…' );
+
+		// Get the JSON file
+		$.ajax( {
+			url: 'icomoon/selection.json',
+			type: 'GET',
+			dataType: 'json'
+		} )
+			.done( function( response ) {
+
+				// Get the class prefix
+				var classPrefix = response.preferences.fontPref.prefix,
+					icomoonJSONIcons = [],
+					icoMoonJSONSearch = [];
+
+				// For each icon
+				$.each( response.icons, function( i, v ) {
+
+					// Set the source
+					icomoonJSONIcons.push( classPrefix + v.properties.name );
+
+					// Create and set the search source
+					if ( v.icon && v.icon.tags && v.icon.tags.length ) {
+						icoMoonJSONSearch.push( v.properties.name + ' ' + v.icon.tags.join( ' ' ) );
+					} else {
+						icoMoonJSONSearch.push( v.properties.name );
+					}
+				} );
+
+				// Set new fonts on fontIconPicker
+				loadAjaxNoCatIcomoon.setIcons( icomoonJSONIcons, icoMoonJSONSearch );
+
+				// Show success message and disable
+				button.removeClass( 'btn-primary' ).addClass( 'btn-success' ).text( 'Succ' ).prop( 'disabled', true );
+
+			} )
+			.fail( function() {
+
+				// Show error message and enable
+				button.removeClass( 'btn-primary' ).addClass( 'btn-danger' ).text( 'Err' ).prop( 'disabled', false );
 			} );
 		e.stopPropagation();
 	} );

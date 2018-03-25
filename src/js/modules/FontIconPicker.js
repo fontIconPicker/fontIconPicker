@@ -165,8 +165,8 @@ FontIconPicker.prototype = {
 	 * Set icons after the fip has been initialized
 	 */
 	setIcons( newIcons, iconSearch ) {
-		this.settings.source = $.extend( {}, newIcons );
-		this.settings.searchSource = $.extend( {}, iconSearch );
+		this.settings.source = Array.isArray( newIcons ) ? [ ...newIcons ] : $.extend( {}, newIcons );
+		this.settings.searchSource = Array.isArray( iconSearch ) ? [ ...iconSearch ] : $.extend( {}, iconSearch );
 		this._initSourceIndex();
 		this._loadCategories();
 		this._resetSearch();
@@ -471,7 +471,7 @@ FontIconPicker.prototype = {
 		// We are going to check if the passed source is an array or an object
 		// If it is an array, then don't do anything
 		// otherwise it has to be an object and therefore is it a categorized icon set
-		if ( $.isArray( this.settings.source ) ) {
+		if ( Array.isArray( this.settings.source ) ) {
 
 			// This is not categorized since it is 1D array
 			this.isCategorized = false;
@@ -489,7 +489,7 @@ FontIconPicker.prototype = {
 
 			// Now update the search
 			// First check if the search is given by user
-			if ( $.isArray( this.settings.searchSource ) ) {
+			if ( Array.isArray( this.settings.searchSource ) ) {
 
 				// Convert everything inside the searchSource to string
 				this.searchValues = $.map( this.settings.searchSource, ( e, i ) => {
@@ -718,7 +718,7 @@ FontIconPicker.prototype = {
 		this.iconContainer.html( '<i class="fip-icon-spin3 animate-spin loading"></i>' );
 
 		// If source is set
-		if ( $.isArray( this.settings.source ) ) {
+		if ( Array.isArray( this.settings.source ) ) {
 
 			// Render icons
 			this._renderIconContainer();
