@@ -279,9 +279,16 @@ during build and if it does produce any error, then it will be rejected.
 
 ### Setup
 
-First make sure Node >= v8 is installed. Then clone the repository and run
+First make sure Node >= v8 is installed. Then clone the repository
 
 ```bash
+git clone git@github.com:fontIconPicker/fontIconPicker.git
+```
+
+and run
+
+```bash
+cd fontIconPicker
 npm install
 npm install -g npx
 ```
@@ -296,6 +303,18 @@ npx gulp serve
 ```
 
 This will serve the changes live in your browser. Access it through `http://localhost:3000`.
+
+### Coding Standards
+
+* All additional modules should go inside `src/js/modules` with unit tests in
+ `__tests__/unit`.
+* Write JS in [ES6](http://es6-features.org/#Constants). [This](https://es6.io) is
+ a great place to learn. It will be compiled with babel on the go.
+* Do not write CSS files directly. Write [SCSS](https://sass-lang.com/). It will
+ be compiled when `npx gulp serve` is running.
+* If you are writing a theme, include in the first box of `demo/index.html`.
+* If you are writing an option or API, include in a separate box of `demo/index.html`.
+* All new JS features should have unit/integration and/or e2e tests. We use [cypress](https://cypress.io) for e2e tests and [jest](https://facebook.github.io/jest/) for unit/integration tests.
 
 ### Automated git hooks
 
