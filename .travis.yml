@@ -17,6 +17,8 @@ before_script:
 script:
   - npx gulp lint
   - npx jest --coverage
+  - npm run serve &>/dev/null &
+  - npx cypress run
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 before_deploy:
