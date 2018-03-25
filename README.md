@@ -204,6 +204,23 @@ $picker.setIcons(['icon-one', 'icon-two']);
 $picker.setIcons(['icon-one', 'icon-two'], ['Icon one will be searched by this', 'Icon two will be searched by this']);
 ```
 
+### setPage( `String|Number` pageNum )
+
+Use this method to programmatically set pagination in the fip popup. This
+persists between open and close state until user has changed pagination manually.
+
+```js
+$picker.setPage( 2 );
+$picker.setPage( 'first );
+$picker.setPage( 'last );
+```
+
+Method accepts numbers and only two special strings. Number corresponds to the
+page number starting from 1.
+
+* `first` will set the pagination to first page.
+* `last` will set the pagination to last page.
+
 ### destroyPicker()
 Use this to remove the icon picker and restore the original element.
 
