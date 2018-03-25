@@ -15,6 +15,7 @@ locally on your machine. A `TL;DR` version is
 3. Run `npm install` on the project folder. This will set things up.
 4. Run `npm run serve` to see all examples and ui in the browser.
 5. Edit files and make changes in `src` directory. Your browser will hot relaod.
+6. Write down tests for new features.
 
 ## Pull Request Process
 
@@ -84,7 +85,7 @@ further defined and clarified by project maintainers.
 ### Enforcement
 
 Instances of abusive, harassing, or otherwise unacceptable behavior may be
-reported by contacting the project team at [INSERT EMAIL ADDRESS]. All
+reported by contacting the project team at [swashata4u at gmail dot com]. All
 complaints will be reviewed and investigated and will result in a response that
 is deemed necessary and appropriate to the circumstances. The project team is
 obligated to maintain confidentiality with regard to the reporter of an incident.
